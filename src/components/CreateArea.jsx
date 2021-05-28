@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { isPropertySignature } from "typescript";
+import NoteAddIcon from "@material-ui/icons/NoteAdd";
+import Fab from "@material-ui/core/Fab";
+import Zoom from "@material-ui/core/Zoom";
 
 function CreateArea(props) {
+  //Creating a state for the expanded state of the input fields
+  const [isExpanded, setExpanded] = useState(false);
   //Create a React state that keeps track of the title and content entered through the forms below
   const [note, setNote] = useState({
     title: "",
@@ -36,23 +41,36 @@ function CreateArea(props) {
     event.preventDefault();
   }
 
+  //Defines the function that gets called when the input of the title is clicked
+  //updates the expended state to true
+  function expand() {
+    setExpanded(true);
+  }
+
   return (
     <div>
-      <form>
-        <input
-          name="title"
-          placeholder="Title"
-          value={note.title}
-          onChange={handleChange}
-        />
+      <form className="create-note">
+        {isExpanded && (
+          <input
+            name="title"
+            placeholder="Title"
+            value={note.title}
+            onChange={handleChange}
+          />
+        )}
         <textarea
+          onClick={expand}
           name="content"
           placeholder="Take a note..."
-          rows="3"
+          rows={isExpanded ? 3 : 1}
           value={note.content}
           onChange={handleChange}
         />
-        <button onClick={submitNote}>Add</button>
+        <Zoom in={isExpanded}>
+          <Fab onClick={submitNote}>
+            <NoteAddIcon />
+          </Fab>
+        </Zoom>
       </form>
     </div>
   );
