@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { isPropertySignature } from "typescript";
 import NoteAddIcon from "@material-ui/icons/NoteAdd";
 import Fab from "@material-ui/core/Fab";
 import Zoom from "@material-ui/core/Zoom";
