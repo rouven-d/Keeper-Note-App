@@ -3,7 +3,6 @@ import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 import Note from "./Note.jsx";
 import CreateArea from "./CreateArea.jsx";
-import { createNotEmittedStatement } from "typescript";
 
 function App() {
   //Defines the state for the notes array that collects all notes from the inputs
